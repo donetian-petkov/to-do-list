@@ -1,4 +1,6 @@
 body {
+    font-size: 20px;
+    font-family: 'Baskerville', sans-serif;
     background: cornflowerblue;
 }
 
@@ -20,18 +22,17 @@ body {
 }
 
 .todo * {
-    margin-bottom: 5px;
+    margin: 10px;
+}
+
+.todo__task-input * {
+    margin: 10px;
 }
 
 .todo__task-input {
     width: 400px;
     border: 2px solid cornflowerblue;
 }
-
-.todo__task-input * {
-    margin: 5px;
-}
-
 
 .todo__task-input__add-button {
     color:#F5F5F5;
