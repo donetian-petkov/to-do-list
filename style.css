@@ -23,6 +23,7 @@ body {
 }
 
 .todo__task-input {
+    width: 400px;
     border: 2px solid cornflowerblue;
 }
 
@@ -61,7 +62,6 @@ body {
     padding:10px;
     margin:10px 0;
     border: 1px solid cornflowerblue;
-    border-bottom:1px solid #eee;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
@@ -71,9 +71,14 @@ body {
 
 .todo__task-list {
     text-align: center;
-    width: 300px;
+    border-collapse: collapse;
+    width: 400px;
     color: white;
     background: cornflowerblue;
+}
+
+.todo__task-list * {
+    border: 1px solid white;
 }
 
 
