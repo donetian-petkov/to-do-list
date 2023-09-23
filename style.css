@@ -5,11 +5,12 @@ body {
 * {
     box-sizing:border-box;
     border-radius: 10px;
+
 }
 
 .todo {
     color: cornflowerblue;
-    background: white;
+    background: #F5F5F5;
     max-width: 820px;
     display: flex;
     justify-content: space-between;
@@ -33,7 +34,7 @@ body {
 
 
 .todo__task-input__add-button {
-    color:white;
+    color:#F5F5F5;
     width: 64px;
     height: 30px;
     border: cornflowerblue;
@@ -44,14 +45,14 @@ body {
 }
 
 .todo__task-input__add-button:hover {
-    background: white;
+    background: #F5F5F5;
     color: cornflowerblue;
     transform: scale(1.1);
 }
 
 .todo__task-input__add-button:active {
     background: cornflowerblue;
-    color: white;
+    color: #F5F5F5;
     transform: scale(0.8);
 }
 
@@ -65,7 +66,7 @@ body {
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
-.todo__task-input__field:focus {
+.todo__task-input__field--focus {
     outline-color:cornflowerblue;
 }
 
@@ -73,12 +74,13 @@ body {
     text-align: center;
     border-collapse: collapse;
     width: 400px;
-    color: white;
+    color: #F5F5F5;
     background: cornflowerblue;
+    box-shadow: 2px 2px 10px 2px cornflowerblue;
 }
 
 .todo__task-list * {
-    border: 1px solid white;
+    border: 1px solid #F5F5F5;
 }
 
 .todo__task-list tr {
@@ -90,7 +92,7 @@ body {
 }
 
 .todo__task-list__header {
-    background: white;
+    background: #F5F5F5;
     color: cornflowerblue;
 }
 

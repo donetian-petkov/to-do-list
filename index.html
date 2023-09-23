@@ -9,11 +9,10 @@
 <body>
 <div class="todo">
   <h1 class="todo__title">My Tasks</h1>
-  <div class="todo__task-input">
-    <input class="todo__task-input__field" type="text" placeholder="Enter your task">
-    <button class="todo__task-input__add-button"><i class="fa-solid fa-plus fa-xl"></i></button>
-
-  </div>
+  <form class="todo__task-input" name="input" id="input">
+    <input class="todo__task-input__field" id="input-field" name="input-field" type="text" placeholder="Enter your task">
+    <button class="todo__task-input__add-button" id="add-button"><i class="fa-solid fa-plus fa-xl"></i></button>
+  </form>
   <table class="todo__task-list">
     <thead class="todo__task-list__header">
     <tr>
@@ -23,24 +22,24 @@
       <th class="todo__task-list__header-item">Actions</th>
     </tr>
     </thead>
-    <tbody class="todo__task-list__body">
-    <tr>
-      <td>1</td>
-      <td>Clean Room</td>
-      <td>Completed</td>
-      <td>Add</td>
+    <tbody class="todo__task-list__body" id="task-list">
+    <tr class="todo__task-list__body__row">
+      <td class="todo__task-list__body__col">1</td>
+      <td class="todo__task-list__body__col">Clean Room</td>
+      <td class="todo__task-list__body__col">Completed</td>
+      <td class="todo__task-list__body__col">Add</td>
     </tr>
-    <tr>
-      <td>2</td>
-      <td>Clean Room</td>
-      <td>Completed</td>
-      <td>Add</td>
+    <tr class="todo__task-list__body__row">
+      <td class="todo__task-list__body__col">1</td>
+      <td class="todo__task-list__body__col">Clean Room</td>
+      <td class="todo__task-list__body__col">Completed</td>
+      <td class="todo__task-list__body__col">Add</td>
     </tr>
-    <tr>
-      <td>3</td>
-      <td>Clean Room</td>
-      <td>Completed</td>
-      <td>Add</td>
+    <tr class="todo__task-list__body__row">
+      <td class="todo__task-list__body__col">1</td>
+      <td class="todo__task-list__body__col">Clean Room</td>
+      <td class="todo__task-list__body__col">Completed</td>
+      <td class="todo__task-list__body__col">Add</td>
     </tr>
     </tbody>
   </table>
