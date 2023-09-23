@@ -81,6 +81,24 @@ body {
     border: 1px solid white;
 }
 
+.todo__task-list tr {
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.todo__task-list :not(:first-child) tr:hover {
+    transform: scale(1.05);
+}
+
+.todo__task-list__header {
+    background: white;
+    color: cornflowerblue;
+}
+
+.todo__task-list__header th {
+    border-radius: 0;
+    border-color: cornflowerblue;
+}
+
 
 
 
