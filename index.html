@@ -3,15 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>To-Do List</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-<div class="container">
-  <h1>To-Do List</h1>
-  <input id="taskInput" type="text" placeholder="Enter your task">
-  <button id="addTask">Add</button>
-  <ul id="taskList">
-  </ul>
+<div class="todo">
+  <h1 class="todo__title">To-Do List</h1>
+  <div class="todo__task-input">
+    <input class="todo__task-input__field" type="text" placeholder="Enter your task">
+    <button class="todo__task-input__add-button"><i class="fa-solid fa-plus fa-xl"></i></button>
+
+  </div>
+  <table class="todo__task-list">
+    <thead class="todo__task-list__header">
+    <tr>
+      <th class="todo__task-list__header-item">No</th>
+      <th class="todo__task-list__header-item">Item</th>
+      <th class="todo__task-list__header-item">Status</th>
+      <th class="todo__task-list__header-item">Actions</th>
+    </tr>
+    </thead>
+    <tbody class="todo__task-list__body">
+    <tr>
+      <td>1</td>
+      <td>Clean Room</td>
+      <td>Completed</td>
+      <td>Add</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Clean Room</td>
+      <td>Completed</td>
+      <td>Add</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Clean Room</td>
+      <td>Completed</td>
+      <td>Add</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 <script src="script.js"></script>
 </body>

@@ -1,68 +1,60 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background: cornflowerblue;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+.todo {
+    color: cornflowerblue;
+    background: chartreuse;
+    max-width: 820px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    flex-direction: column;
+    margin: auto;
 }
 
-.container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px 0px #aaa;
-    text-align: center;
+.todo * {
+    margin-bottom: 5px;
 }
 
-h1 {
-    margin-bottom: 20px;
+
+.todo__task-input__add-button {
+    width: 64px;
+    height: 30px;
+    border-radius: 5px;
+    background: cornflowerblue;
+    box-shadow: 2px 2px 10px 2px black;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
+;
 }
 
-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.todo__task-input__add-button:hover {
+    background: white;
+    color: cornflowerblue;
+    transform: scale(1.1);
 }
 
-button:hover {
-    background-color: #0056b3;
+.todo__task-input__field {
+    height: 30px;
+    width: 300px;
+    padding:10px;
+    margin:10px 0;
+    border:0;
+    border-radius:10px;
+    border-bottom:1px solid #eee;
+    color: cornflowerblue;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+.todo__task-input__field {
+    border-radius: 10px;
 }
 
-li {
-    padding: 15px;
-    background-color: #f9f9f9;
-    margin: 10px;
-    border-radius: 4px;
-    position: relative;
-    transition: background-color 0.3s;
-}
 
-li:hover {
-    background-color: #e6e6e6;
-}
 
-li.complete {
-    text-decoration: line-through;
-}
 
-.deleteBtn {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-}
+
