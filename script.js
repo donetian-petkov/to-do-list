@@ -7,17 +7,27 @@ inputField.addEventListener('submit', function(e) {
 
     e.preventDefault();
 
-    addTask(e.target.elements["input-field"].value);
+    const task = e.target.elements["input-field"].value;
+
+    addTask(task);
+    saveTodoToLocal(task)
 })
 
 const addTask = (task) => {
 
+    console.log(task);
+
     const tasks = localStorage.getItem('tasks') || [];
 
     const tr = document.createElement('tr');
-    const td = document.createElement('td');
-    td.textContent = task;
-    tr.appendChild(td);
+    const id = document.createElement('td');
+    const todo = document.createElement('td');
+
+    id.textContent = tasks.length.toString();
+    todo.textContent = task;
+
+    tr.appendChild(id);
+    tr.appendChild(todo);
     taskList.appendChild(tr);
 
 }
