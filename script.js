@@ -1,8 +1,5 @@
 const inputField = document.getElementById('input');
 const taskList = document.getElementById('task-list');
-
-const savedTodos = JSON.parse(localStorage.getItem('tasks')) || [];
-savedTodos.forEach(task => addTask(task));
 inputField.addEventListener('submit', function(e) {
 
     e.preventDefault();
@@ -32,11 +29,12 @@ const addTask = (task) => {
 
 }
 
-
-
 function saveTodoToLocal(task) {
     const todos = JSON.parse(localStorage.getItem('tasks')) || [];
     todos.push(task);
     localStorage.setItem('tasks', JSON.stringify(todos));
 }
+
+const savedTodos = JSON.parse(localStorage.getItem('tasks')) || [];
+savedTodos.forEach(task => addTask(task));
 
