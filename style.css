@@ -110,13 +110,11 @@ body {
 
 }
 
-.todo__task-list__body__dlt-but:hover {
-    transform: scale(1.1);
-}
 
 .todo__task-list__body__dlt-but:active {
     transform: scale(0.8);
 }
+
 
 
 
