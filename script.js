@@ -18,12 +18,28 @@ const addTask = (task, save = false) => {
     const tr = document.createElement('tr');
     const id = document.createElement('td');
     const todo = document.createElement('td');
+    const status = document.createElement('td');
+    const deleteButton = document.createElement('button');
+    const icon = document.createElement('i');
+
+    tr.className = 'todo__task-list__body__row';
+    todo.className = 'todo__task-list__body__col';
+    deleteButton.className = 'todo__task-list__body__dlt-but';
+    icon.className = 'fa-regular fa-trash-can';
 
     id.textContent = task.id || (tasks.length + 1).toString();
     todo.textContent = task.taskInput || task;
+    status.textContent = task.status || 'Not Completed';
+
+
+
+    deleteButton.appendChild(icon);
+
 
     tr.appendChild(id);
     tr.appendChild(todo);
+    tr.appendChild(status);
+    tr.appendChild(deleteButton);
     taskList.appendChild(tr);
 
     if (save) {
@@ -36,13 +52,20 @@ function saveTodoToLocal(taskInput) {
     const todos = JSON.parse(localStorage.getItem('tasks')) || [];
     const id = todos.length + 1;
 
+    const status = 'Not Completed';
+
     const task = {
         id,
-        taskInput
+        taskInput,
+        status
     }
 
     todos.push(task);
     localStorage.setItem('tasks', JSON.stringify(todos));
+}
+
+function checkTask(id) {
+
 }
 
 const savedTodos = JSON.parse(localStorage.getItem('tasks')) || [];

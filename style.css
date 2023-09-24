@@ -102,6 +102,22 @@ body {
     border-color: cornflowerblue;
 }
 
+.todo__task-list__body__dlt-but {
+
+    color: cornflowerblue;
+    box-shadow: 2px 2px 10px 2px cornflowerblue;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
+
+}
+
+.todo__task-list__body__dlt-but:hover {
+    transform: scale(1.1);
+}
+
+.todo__task-list__body__dlt-but:active {
+    transform: scale(0.8);
+}
+
 
 
 
