@@ -30,12 +30,16 @@ const addTask = (task, save = false) => {
     id.textContent = task.id || (tasks.length + 1).toString();
     todo.textContent = task.taskInput || task;
     status.textContent = task.status || 'Not Completed';
+    tr.id = `task-list-${task.id || (tasks.length + 1)}`;
 
+    deleteButton.addEventListener('click', function() {
+
+        deleteTask(task.id || (tasks.length + 1));
+
+    })
 
 
     deleteButton.appendChild(icon);
-
-
     tr.appendChild(id);
     tr.appendChild(todo);
     tr.appendChild(status);
@@ -64,7 +68,15 @@ function saveTodoToLocal(taskInput) {
     localStorage.setItem('tasks', JSON.stringify(todos));
 }
 
-function checkTask(id) {
+function deleteTask(id) {
+
+    const savedTodos = JSON.parse(localStorage.getItem('tasks')) || [];
+    const newTodos = savedTodos.filter (x => x.id !== id);
+    localStorage.setItem('tasks', JSON.stringify(newTodos));
+
+
+    const rowToBeDelete = document.getElementById(`task-list-${id}`);
+    rowToBeDelete.remove();
 
 }
 
