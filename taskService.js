@@ -6,6 +6,7 @@ export const addTask = (task, HTMLElem, saveTask = false) => {
     const tr = document.createElement('tr');
     const id = document.createElement('td');
     const todo = document.createElement('td');
+    const taskContent = document.createElement('span')
     const status = document.createElement('td');
     const deleteButton = document.createElement('button');
     const icon = document.createElement('i');
@@ -18,7 +19,7 @@ export const addTask = (task, HTMLElem, saveTask = false) => {
     icon.className = 'fa-regular fa-trash-can';
 
     id.textContent = task.id || (tasks.length + 1).toString();
-    todo.textContent = task.taskInput || task;
+    taskContent.textContent = task.taskInput || task;
     status.textContent = task.status || 'Not Completed';
 
     if (status.textContent === 'Completed') {
@@ -26,6 +27,28 @@ export const addTask = (task, HTMLElem, saveTask = false) => {
     }
 
     tr.id = `task-list-${task.id || (tasks.length + 1)}`;
+    taskContent.id = `task-content-${task.id || (tasks.length + 1)}`;
+
+    taskContent.addEventListener('click', function() {
+        if (!this.isContentEditable) {
+            this.contentEditable = true;
+            this.focus();
+        }
+    });
+
+   taskContent.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            this.blur();
+            this.contentEditable = false;
+            const taskInput = e.target.textContent;
+            editTask(task.id || (tasks.length + 1), taskInput, HTMLElem);
+        }
+       });
+
+    taskContent.addEventListener('blur', function(e) {
+        const taskInput = e.target.textContent;
+        editTask(task.id || (tasks.length + 1), taskInput, HTMLElem);
+    });
 
     status.addEventListener('click', function () {
 
@@ -38,6 +61,7 @@ export const addTask = (task, HTMLElem, saveTask = false) => {
 
     });
 
+    todo.appendChild(taskContent);
     deleteButton.appendChild(icon);
     tr.appendChild(id);
     tr.appendChild(todo);
@@ -70,7 +94,24 @@ export function changeStatusTask(id, HTMLElem) {
 
 
 }
+export function editTask(id, taskInput, HTMLElem) {
 
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const newTasks = savedTasks.map(x => {
+
+            if (x.id === id) {
+                return {
+                    ...x,
+                    taskInput: taskInput
+                }
+            } else return x;
+
+        }
+    );
+
+    updateTaskList(newTasks,HTMLElem);
+
+}
 export function deleteTask(id, HTMLElem) {
 
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -106,3 +147,4 @@ export function updateTaskList(tasks,HTMLElem) {
     HTMLElem.replaceChildren();
     tasks.forEach(task => addTask(task, HTMLElem));
 }
+

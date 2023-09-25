@@ -125,11 +125,15 @@ body {
 
 .todo__task-list__body__row--completed :not(:last-child) {
     border-radius: 0;
-    background: greenyellow;
+    background: var(--background-color);
     color: var(--accent-color);
 }
 
-
+.todo__task-list__body__col span {
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+}
 
 
 
