@@ -70,24 +70,23 @@ function saveTodoToLocal(taskInput) {
 
 function deleteTask(id) {
 
-    const savedTodos = JSON.parse(localStorage.getItem('tasks')) || [];
-  /*  const newTodos = savedTodos.filter(x => x.id !== id).map(x => {
-        {
-            ...x,
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const newTasks = savedTasks.filter(x => x.id !== id).map(x =>
+        x.id > id
+            ? { ...x, id:x.id-1 }
+            : x
+    );
 
-        }
-    });*/
+    // const newTasks = savedTasks.filter(x => x.id !== id);
 
+    localStorage.removeItem('tasks');
+    localStorage.setItem('tasks', JSON.stringify(newTasks));
 
-    // const newTodos = savedTodos.filter(x => x.id !== id);
-    localStorage.setItem('tasks', JSON.stringify(newTodos));
-
-
-    const rowToBeDelete = document.getElementById(`task-list-${id}`);
-    rowToBeDelete.remove();
+    taskList.replaceChildren();
+    newTasks.forEach(task => addTask(task));
 
 }
 
-const savedTodos = JSON.parse(localStorage.getItem('tasks')) || [];
-savedTodos.forEach(task => addTask(task));
+const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+savedTasks.forEach(task => addTask(task));
 
