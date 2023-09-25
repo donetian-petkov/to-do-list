@@ -123,6 +123,12 @@ body {
     transform: scale(0.8);
 }
 
+.todo__task-list__body__row--completed :not(:last-child) {
+    border-radius: 0;
+    background: greenyellow;
+    color: var(--accent-color);
+}
+
 
 
 

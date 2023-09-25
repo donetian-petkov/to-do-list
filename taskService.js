@@ -12,17 +12,24 @@ export const addTask = (task, HTMLElem, saveTask = false) => {
 
     tr.className = 'todo__task-list__body__row';
     todo.className = 'todo__task-list__body__col';
+    id.className = 'todo__task-list__body__col';
+    status.className = 'todo__task-list__body__col';
     deleteButton.className = 'todo__task-list__body__dlt-but';
     icon.className = 'fa-regular fa-trash-can';
 
     id.textContent = task.id || (tasks.length + 1).toString();
     todo.textContent = task.taskInput || task;
     status.textContent = task.status || 'Not Completed';
+
+    if (status.textContent === 'Completed') {
+        tr.className='todo__task-list__body__row--completed';
+    }
+
     tr.id = `task-list-${task.id || (tasks.length + 1)}`;
 
     status.addEventListener('click', function () {
 
-        changeTaskStatus(task.id || (tasks.length + 1), HTMLElem);
+        changeStatusTask(task.id || (tasks.length + 1), HTMLElem);
 
     });
     deleteButton.addEventListener('click', function () {
@@ -44,7 +51,7 @@ export const addTask = (task, HTMLElem, saveTask = false) => {
 
 }
 
-export function changeTaskStatus(id, HTMLElem) {
+export function changeStatusTask(id, HTMLElem) {
 
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const newTasks = savedTasks.map(x => {
