@@ -1,18 +1,24 @@
+:root {
+    --text-color: #F5F5F5;
+    --accent-color: cornflowerblue;
+    --background-color: #1F2937;
+}
+
 body {
     font-size: 20px;
     font-family: 'Baskerville', sans-serif;
-    background: cornflowerblue;
+    background: var(--background-color);
 }
 
 * {
-    box-sizing:border-box;
+    box-sizing: border-box;
     border-radius: 10px;
 
 }
 
 .todo {
-    color: cornflowerblue;
-    background: #F5F5F5;
+    color: var(--accent-color);
+    background: var(--text-color);
     max-width: 820px;
     display: flex;
     justify-content: space-between;
@@ -31,57 +37,56 @@ body {
 
 .todo__task-input {
     width: 400px;
-    border: 2px solid cornflowerblue;
+    border: 2px solid var(--accent-color);
 }
 
 .todo__task-input__add-button {
-    color:#F5F5F5;
+    color: var(--text-color);
     width: 64px;
     height: 30px;
-    border: cornflowerblue;
-    background: cornflowerblue;
-    box-shadow: 2px 2px 10px 2px cornflowerblue;
-    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
-;
+    border: var(--accent-color);
+    background: var(--accent-color);
+    box-shadow: 2px 2px 10px 2px var(--accent-color);
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;;
 }
 
 .todo__task-input__add-button:hover {
-    background: #F5F5F5;
-    color: cornflowerblue;
+    background: var(--text-color);
+    color: var(--accent-color);
     transform: scale(1.1);
 }
 
 .todo__task-input__add-button:active {
-    background: cornflowerblue;
-    color: #F5F5F5;
+    background: var(--accent-color);
+    color: var(--text-color);
     transform: scale(0.8);
 }
 
 .todo__task-input__field {
-    color:cornflowerblue;
+    color: var(--accent-color);
     height: 30px;
     width: 300px;
-    padding:10px;
-    margin:10px 0;
-    border: 1px solid cornflowerblue;
-    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
 
 .todo__task-input__field--focus {
-    outline-color:cornflowerblue;
+    outline-color: var(--accent-color);
 }
 
 .todo__task-list {
     text-align: center;
     border-collapse: collapse;
     width: 400px;
-    color: #F5F5F5;
-    background: cornflowerblue;
-    box-shadow: 2px 2px 10px 2px cornflowerblue;
+    color: var(--text-color);
+    background: var(--accent-color);
+    box-shadow: 2px 2px 10px 2px var(--accent-color);
 }
 
 .todo__task-list * {
-    border: 1px solid #F5F5F5;
+    border: 1px solid var(--text-color);
 }
 
 .todo__task-list tr {
@@ -93,19 +98,19 @@ body {
 }
 
 .todo__task-list__header {
-    background: #F5F5F5;
-    color: cornflowerblue;
+    background: var(--text-color);
+    color: var(--accent-color);
 }
 
 .todo__task-list__header th {
     border-radius: 0;
-    border-color: cornflowerblue;
+    border-color: var(--accent-color);
 }
 
 .todo__task-list__body__dlt-but {
 
-    color: cornflowerblue;
-    box-shadow: 2px 2px 10px 2px cornflowerblue;
+    color: var(--accent-color);
+    box-shadow: 2px 2px 10px 2px var(--accent-color);
     transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
 
 }

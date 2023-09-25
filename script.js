@@ -71,7 +71,15 @@ function saveTodoToLocal(taskInput) {
 function deleteTask(id) {
 
     const savedTodos = JSON.parse(localStorage.getItem('tasks')) || [];
-    const newTodos = savedTodos.filter (x => x.id !== id);
+  /*  const newTodos = savedTodos.filter(x => x.id !== id).map(x => {
+        {
+            ...x,
+
+        }
+    });*/
+
+
+    // const newTodos = savedTodos.filter(x => x.id !== id);
     localStorage.setItem('tasks', JSON.stringify(newTodos));
 
 
