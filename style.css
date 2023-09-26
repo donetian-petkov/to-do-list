@@ -142,6 +142,26 @@ body {
     padding: 5px;
 }
 
+@media (max-width: 412px) {
+    * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        object-fit: contain;
+        max-width: 300px;
+    }
+
+    .todo__task-list__header {
+        display: none;
+    }
+
+    .todo__task-list__body * {
+        flex-direction: row;
+        border: 0;
+    }
+}
+
 
 
 
