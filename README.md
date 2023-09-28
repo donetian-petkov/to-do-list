@@ -8,7 +8,7 @@ I separated the JavaScript functions related to the management of the tasks in a
 
 ## Installation
 
-Just open the index.html on your browser. 
+Just open the index.html on your browser and ensure that JavaScript is working properly on the browser.
 
 ## Live Preview: 
 
