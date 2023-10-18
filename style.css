@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Urbanist:ital,wght@1,100;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&family=Shadows+Into+Light&family=Urbanist:ital,wght@1,100;1,400&display=swap');
 
 :root {
     --text-color: #F5F5F5;
@@ -28,11 +28,18 @@ body {
     align-items: center;
     flex-direction: column;
     margin: auto;
-    box-shadow: 10px 13px 5px 0px var(--accent-color);
+    box-shadow: 0.8em 0.8em 0.4em 0 var(--accent-color);
 }
 
 .todo * {
     margin: 10px;
+}
+
+.todo__title {
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 2em;
+    color: var(--accent-color);
+    text-shadow: 0.5em 0.5em 0.5em 1em var(--background-color);
 }
 
 .todo__input * {
@@ -55,6 +62,7 @@ body {
 }
 
 .todo__input-button:hover {
+    cursor: pointer;
     background: var(--text-color);
     color: var(--accent-color);
     transform: scale(1.1);
@@ -111,7 +119,7 @@ body {
     border-color: var(--accent-color);
 }
 
-.todo___list-dlt-btn {
+.todo__list-dlt-btn {
 
     color: var(--accent-color);
     box-shadow: 2px 2px 10px 2px var(--accent-color);
@@ -119,29 +127,37 @@ body {
 
 }
 
-.todo___list-dlt-btn:hover {
+.todo__list-dlt-btn:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
 
-.todo___list-dlt-btn:active {
+.todo__list-dlt-btn:active {
     cursor: pointer;
     transform: scale(0.8);
 }
 
-.todo___list-col--completed {
+.todo__list-col--completed {
     background: var(--background-color);
     color: var(--accent-color);
 }
 
-.todo___list-col--completed * {
+.todo__list-col--completed * {
     border-radius: 0;
 }
 
-.todo___list-col span {
+.todo__list-col--completed :nth-child(2) {
+    text-decoration: line-through;
+}
+
+.todo__list-col span {
     width: 100%;
     border: 0;
     border-radius: 0;
+}
+
+.complete-field:hover {
+    cursor: pointer;
 }
 
 [contenteditable="true"] {

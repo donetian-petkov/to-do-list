@@ -1,73 +1,89 @@
-export const addTask = (task, HTMLElem, saveTask = false) => {
-
-    const tasksString = localStorage.getItem('tasks');
-    const tasks = tasksString ? JSON.parse(tasksString) : [];
+function createRow(task, tasks, HTMLElem) {
 
     const tr = document.createElement('tr');
     const id = document.createElement('td');
     const todo = document.createElement('td');
     const taskContent = document.createElement('span')
-    const status = document.createElement('td');
+    const statusField = document.createElement('td');
     const deleteButton = document.createElement('button');
     const icon = document.createElement('i');
 
     tr.className = 'todo__list-row';
-    todo.className = 'todo___list-col';
-    id.className = 'todo___list-col';
-    status.className = 'todo___list-col';
-    deleteButton.className = 'todo___list-dlt-btn';
+    todo.className = 'todo__list-col';
+    id.className = 'todo__list-col';
+    statusField.className = 'todo__list-col complete-field';
+    deleteButton.className = 'todo__list-dlt-btn';
     icon.className = 'fa-regular fa-trash-can';
 
     id.textContent = task.id || (tasks.length + 1).toString();
     taskContent.textContent = task.taskInput || task;
-    status.textContent = task.status || 'Not Completed';
+    statusField.textContent = task.statusField || 'Not Completed';
 
-    if (status.textContent === 'Completed') {
-        tr.className='todo___list-col--completed';
+    if (statusField.textContent === 'Completed') {
+        tr.className = 'todo__list-col--completed';
     }
 
-    tr.id = `task-list-${task.id || (tasks.length + 1)}`;
-    taskContent.id = `task-content-${task.id || (tasks.length + 1)}`;
+    tr.id = `task-list-${getTaskId(task, tasks)}`;
+    taskContent.id = `task-content-${getTaskId(task, tasks)}`;
 
-    taskContent.addEventListener('click', function() {
+    attachListenersToRow(taskContent, task, tasks, statusField, deleteButton, HTMLElem);
+
+    todo.appendChild(taskContent);
+    deleteButton.appendChild(icon);
+    tr.appendChild(id);
+    tr.appendChild(todo);
+    tr.appendChild(statusField);
+    tr.appendChild(deleteButton);
+    HTMLElem.appendChild(tr);
+}
+
+function attachListenersToRow(taskContent, task, tasks, statusField, deleteButton, HTMLElem) {
+
+    taskContent.addEventListener('click', function () {
         if (!this.isContentEditable) {
             this.contentEditable = true;
             this.focus();
         }
     });
 
-   taskContent.addEventListener('keydown', function(e) {
+    taskContent.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
             this.blur();
             this.contentEditable = false;
             const taskInput = e.target.textContent;
-            editTask(task.id || (tasks.length + 1), taskInput, HTMLElem);
+            editTask(getTaskId(task, tasks), taskInput, HTMLElem);
         }
-       });
-
-    taskContent.addEventListener('blur', function(e) {
-        const taskInput = e.target.textContent;
-        editTask(task.id || (tasks.length + 1), taskInput, HTMLElem);
     });
 
-    status.addEventListener('click', function () {
+    taskContent.addEventListener('blur', function (e) {
+        const taskInput = e.target.textContent;
+        editTask(getTaskId(task, tasks), taskInput, HTMLElem);
+    });
 
-        changeStatusTask(task.id || (tasks.length + 1), HTMLElem);
+    statusField.addEventListener('click', function () {
+
+        changeStatusTask(getTaskId(task, tasks), HTMLElem);
 
     });
     deleteButton.addEventListener('click', function () {
 
-        deleteTask(task.id || (tasks.length + 1), HTMLElem);
+        deleteTask(getTaskId(task, tasks), HTMLElem);
 
     });
+}
 
-    todo.appendChild(taskContent);
-    deleteButton.appendChild(icon);
-    tr.appendChild(id);
-    tr.appendChild(todo);
-    tr.appendChild(status);
-    tr.appendChild(deleteButton);
-    HTMLElem.appendChild(tr);
+export const addTask = (task, HTMLElem, saveTask = false, storage = localStorage) => {
+
+    let tasksString;
+
+    try {
+        tasksString = storage.getItem('tasks');
+    } catch (e) {
+        alert(e);
+    }
+    const tasks = tasksString ? JSON.parse(tasksString) : [];
+
+    createRow(task, tasks, HTMLElem);
 
     if (saveTask) {
         saveTaskToLocalStorage(task);
@@ -75,28 +91,39 @@ export const addTask = (task, HTMLElem, saveTask = false) => {
 
 }
 
-export function changeStatusTask(id, HTMLElem) {
+export function changeStatusTask(id, HTMLElem, storage = localStorage) {
 
-    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    let savedTasks;
+    try {
+        savedTasks = JSON.parse(storage.getItem('tasks')) || [];
+    } catch (e) {
+        alert(e);
+    }
     const newTasks = savedTasks.map(x => {
 
             if (x.id === id) {
                 return {
                     ...x,
-                    status: x.status === 'Completed' ? 'Not Completed' : 'Completed'
+                    statusField: x.statusField === 'Completed' ? 'Not Completed' : 'Completed'
                 }
             } else return x;
 
         }
     );
 
-  updateTaskList(newTasks,HTMLElem);
+    updateTaskList(newTasks, HTMLElem);
 
 
 }
-export function editTask(id, taskInput, HTMLElem) {
 
-    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+export function editTask(id, taskInput, HTMLElem, storage = localStorage) {
+
+    let savedTasks;
+    try {
+        savedTasks = JSON.parse(storage.getItem('tasks')) || [];
+    } catch (e) {
+        alert(e);
+    }
     const newTasks = savedTasks.map(x => {
 
             if (x.id === id) {
@@ -109,42 +136,64 @@ export function editTask(id, taskInput, HTMLElem) {
         }
     );
 
-    updateTaskList(newTasks,HTMLElem);
+    updateTaskList(newTasks, HTMLElem);
 
 }
-export function deleteTask(id, HTMLElem) {
 
-    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+export function deleteTask(id, HTMLElem, storage = localStorage) {
+
+    let savedTasks;
+    try {
+        savedTasks = JSON.parse(storage.getItem('tasks')) || [];
+    } catch (e) {
+        alert(e);
+    }
     const newTasks = savedTasks.filter(x => x.id !== id).map(x =>
         x.id >= id
             ? {...x, id: x.id - 1}
             : x
     );
 
-    updateTaskList(newTasks,HTMLElem);
+    updateTaskList(newTasks, HTMLElem);
 
 }
 
-export function saveTaskToLocalStorage(taskInput) {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    const id = tasks.length + 1;
-    const status = 'Not Completed';
-    const task = {
-        id,
-        taskInput,
-        status
+export function saveTaskToLocalStorage(taskInput, storage = localStorage) {
+    try {
+        const tasks = JSON.parse(storage.getItem('tasks')) || [];
+        const id = tasks.length + 1;
+        const statusField = 'Not Completed';
+        const task = {
+            id,
+            taskInput,
+            statusField
+        }
+
+        tasks.push(task);
+        storage.setItem('tasks', JSON.stringify(tasks));
+    } catch (e) {
+        alert(e);
+    }
+}
+
+export function updateTaskList(tasks, HTMLElem, storage = localStorage) {
+
+    try {
+        storage.setItem('tasks', JSON.stringify(tasks));
+    } catch (e) {
+        alert(e);
     }
 
-    tasks.push(task);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    renderTasks(tasks, HTMLElem);
 }
 
-export function updateTaskList(tasks,HTMLElem) {
-
-    localStorage.removeItem('tasks');
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+export function renderTasks(tasks, HTMLElem) {
 
     HTMLElem.replaceChildren();
     tasks.forEach(task => addTask(task, HTMLElem));
+}
+
+function getTaskId(task, tasks) {
+    return task.id || (tasks.length + 1);
 }
 
