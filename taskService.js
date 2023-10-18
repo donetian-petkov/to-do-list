@@ -11,11 +11,11 @@ export const addTask = (task, HTMLElem, saveTask = false) => {
     const deleteButton = document.createElement('button');
     const icon = document.createElement('i');
 
-    tr.className = 'todo__task-list__body__row';
-    todo.className = 'todo__task-list__body__col';
-    id.className = 'todo__task-list__body__col';
-    status.className = 'todo__task-list__body__col';
-    deleteButton.className = 'todo__task-list__body__dlt-but';
+    tr.className = 'todo__list-row';
+    todo.className = 'todo___list-col';
+    id.className = 'todo___list-col';
+    status.className = 'todo___list-col';
+    deleteButton.className = 'todo___list-dlt-but';
     icon.className = 'fa-regular fa-trash-can';
 
     id.textContent = task.id || (tasks.length + 1).toString();
@@ -23,7 +23,7 @@ export const addTask = (task, HTMLElem, saveTask = false) => {
     status.textContent = task.status || 'Not Completed';
 
     if (status.textContent === 'Completed') {
-        tr.className='todo__task-list__body__row--completed';
+        tr.className='todo___list-col--completed';
     }
 
     tr.id = `task-list-${task.id || (tasks.length + 1)}`;
