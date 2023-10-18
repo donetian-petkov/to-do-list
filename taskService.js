@@ -15,7 +15,7 @@ export const addTask = (task, HTMLElem, saveTask = false) => {
     todo.className = 'todo___list-col';
     id.className = 'todo___list-col';
     status.className = 'todo___list-col';
-    deleteButton.className = 'todo___list-dlt-but';
+    deleteButton.className = 'todo___list-dlt-btn';
     icon.className = 'fa-regular fa-trash-can';
 
     id.textContent = task.id || (tasks.length + 1).toString();
