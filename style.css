@@ -27,7 +27,7 @@ button:hover {
     cursor: pointer;
     background: var(--text-color);
     color: var(--accent-color);
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 button:active {
@@ -145,6 +145,11 @@ button:active {
 
 .todo__list-status:hover {
     cursor: pointer;
+}
+
+.todo__delete-all:hover {
+    color: var(--text-color);
+    background: var(--accent-color);
 }
 
 [contenteditable="true"] {
