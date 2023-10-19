@@ -124,6 +124,11 @@ button:active {
     border-color: var(--accent-color);
 }
 
+.todo__list-col--not-completed {
+    background: var(--accent-color);
+    color: var(--text-color);
+}
+
 .todo__list-col--completed {
     background: var(--background-color);
     color: var(--accent-color);

@@ -27,6 +27,8 @@ function createRow(task, tasks, HTMLElem) {
 
     if (statusField.textContent === 'Completed') {
         tr.className = 'todo__list-col--completed';
+    } else {
+        tr.className = 'todo__list-col--not-completed';
     }
 
     tr.id = `task-list-${getTaskId(task, tasks)}`;
