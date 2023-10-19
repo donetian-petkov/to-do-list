@@ -5,15 +5,21 @@ function createRow(task, tasks, HTMLElem) {
     const todo = document.createElement('td');
     const taskContent = document.createElement('span')
     const statusField = document.createElement('td');
+    const actionField = document.createElement('td');
+    const completeButton = document.createElement('button');
+    const iconCompleteButton = document.createElement('i');
     const deleteButton = document.createElement('button');
-    const icon = document.createElement('i');
+    const iconDeleteButton = document.createElement('i');
 
     tr.className = 'todo__list-row';
     todo.className = 'todo__list-col';
-    id.className = 'todo__list-col';
-    statusField.className = 'todo__list-col complete-field';
+    id.className = 'todo__list-col todo__list-id';
+    statusField.className = 'todo__list-col todo__list-status';
+    actionField.className = 'todo__list-col todo__list-actions';
     deleteButton.className = 'todo__list-dlt-btn';
-    icon.className = 'fa-solid fa-trash';
+    iconDeleteButton.className = 'fa-solid fa-trash';
+    completeButton.className = 'todo__list-cmp-btn';
+    iconCompleteButton.className = 'fa-solid fa-check';
 
     id.textContent = task.id || (tasks.length + 1).toString();
     taskContent.textContent = task.taskInput || task;
@@ -26,18 +32,22 @@ function createRow(task, tasks, HTMLElem) {
     tr.id = `task-list-${getTaskId(task, tasks)}`;
     taskContent.id = `task-content-${getTaskId(task, tasks)}`;
 
-    attachListenersToRow(taskContent, task, tasks, statusField, deleteButton, HTMLElem);
+    attachListenersToRow(taskContent, task, tasks, statusField, deleteButton, completeButton, HTMLElem);
 
     todo.appendChild(taskContent);
-    deleteButton.appendChild(icon);
+    completeButton.appendChild(iconCompleteButton);
+    deleteButton.appendChild(iconDeleteButton);
+    actionField.appendChild(completeButton);
+    actionField.appendChild(deleteButton);
     tr.appendChild(id);
     tr.appendChild(todo);
     tr.appendChild(statusField);
-    tr.appendChild(deleteButton);
+    tr.appendChild(actionField);
+
     HTMLElem.appendChild(tr);
 }
 
-function attachListenersToRow(taskContent, task, tasks, statusField, deleteButton, HTMLElem) {
+function attachListenersToRow(taskContent, task, tasks, statusField, deleteButton, completeButton, HTMLElem) {
 
     taskContent.addEventListener('click', function () {
         if (!this.isContentEditable) {
@@ -70,6 +80,12 @@ function attachListenersToRow(taskContent, task, tasks, statusField, deleteButto
         deleteTask(getTaskId(task, tasks), HTMLElem);
 
     });
+
+    completeButton.addEventListener('click', function () {
+
+        changeStatusTask(getTaskId(task, tasks), HTMLElem);
+
+    })
 }
 
 export const addTask = (task, HTMLElem, saveTask = false, storage = localStorage) => {
@@ -112,7 +128,6 @@ export function changeStatusTask(id, HTMLElem, storage = localStorage) {
     );
 
     updateTaskList(newTasks, HTMLElem);
-
 
 }
 

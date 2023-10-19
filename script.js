@@ -15,6 +15,8 @@ inputField.addEventListener('submit', function(e) {
     }
 
     addTask(task, taskList, true);
+
+    e.target.elements["input-field"].value = '';
 });
 
 const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -22,7 +24,7 @@ savedTasks.forEach(task => addTask(task,taskList));
 
 deleteAllButton.addEventListener('click', function() {
 
-    localStorage.clear();
+    localStorage.removeItem('tasks');
     taskList.innerHTML = '';
 
 });
