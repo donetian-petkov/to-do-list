@@ -13,7 +13,7 @@ function createRow(task, tasks, HTMLElem) {
     id.className = 'todo__list-col';
     statusField.className = 'todo__list-col complete-field';
     deleteButton.className = 'todo__list-dlt-btn';
-    icon.className = 'fa-regular fa-trash-can';
+    icon.className = 'fa-solid fa-trash';
 
     id.textContent = task.id || (tasks.length + 1).toString();
     taskContent.textContent = task.taskInput || task;

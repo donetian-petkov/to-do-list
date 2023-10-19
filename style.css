@@ -14,14 +14,32 @@ body {
 
 * {
     box-sizing: border-box;
-    border-radius: 16px;
 
+}
+
+button {
+    color: var(--accent-color);
+    border: none;
+    box-shadow: 0.2em 0.2em 1em 0.2em var(--accent-color);
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+button:hover {
+    cursor: pointer;
+    background: var(--text-color);
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+button:active {
+    background: var(--accent-color);
+    color: var(--text-color);
+    transform: scale(0.8);
 }
 
 .todo {
     color: var(--accent-color);
     background: var(--text-color);
-    max-width: 60%;
     width: 60%;
     display: flex;
     justify-content: space-between;
@@ -32,7 +50,7 @@ body {
 }
 
 .todo * {
-    margin: 10px;
+    margin: 0.6em;
 }
 
 .todo__title {
@@ -43,43 +61,29 @@ body {
 }
 
 .todo__input * {
-    margin: 10px;
+    margin: 0.6em;
 }
 
 .todo__input {
-    width: 400px;
-    border: 2px solid var(--accent-color);
+    width: 20em;
+    border: 0.1em solid var(--accent-color);
 }
 
 .todo__input-button {
     color: var(--text-color);
-    width: 64px;
-    height: 30px;
+    width: 4em;
+    height: 3em;
     border: var(--accent-color);
     background: var(--accent-color);
-    box-shadow: 2px 2px 10px 2px var(--accent-color);
-    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;;
-}
-
-.todo__input-button:hover {
-    cursor: pointer;
-    background: var(--text-color);
-    color: var(--accent-color);
-    transform: scale(1.1);
-}
-
-.todo__input-button:active {
-    background: var(--accent-color);
-    color: var(--text-color);
-    transform: scale(0.8);
+    border-radius: 1em;
 }
 
 .todo__input-field {
     color: var(--accent-color);
-    height: 30px;
-    width: 300px;
-    padding: 10px;
-    margin: 10px 0;
+    font-size: 0.8em;
+    width: 80%;
+    padding: 2%;
+    margin: 1% auto;
     border: 1px solid var(--accent-color);
     box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
@@ -117,24 +121,6 @@ body {
 .todo__list-header th {
     border-radius: 0;
     border-color: var(--accent-color);
-}
-
-.todo__list-dlt-btn {
-
-    color: var(--accent-color);
-    box-shadow: 2px 2px 10px 2px var(--accent-color);
-    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
-
-}
-
-.todo__list-dlt-btn:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-.todo__list-dlt-btn:active {
-    cursor: pointer;
-    transform: scale(0.8);
 }
 
 .todo__list-col--completed {
