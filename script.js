@@ -9,6 +9,11 @@ inputField.addEventListener('submit', function(e) {
 
     const task = e.target.elements["input-field"].value;
 
+    if (!task) {
+        alert('Please enter a task');
+        return;
+    }
+
     addTask(task, taskList, true);
 });
 
