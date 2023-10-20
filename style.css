@@ -18,9 +18,9 @@ body {
 
 button {
     color: var(--accent-color);
-    border: none;
+    border: 0;
     box-shadow: 0.2em 0.2em 1em 0.2em var(--accent-color);
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 button:hover {
@@ -66,6 +66,7 @@ button:active {
     justify-content: center;
     align-items: center;
     width: 60%;
+    box-shadow: 0.1em 0.1em 0.5em 0.1em var(--accent-color);
     border: 0.1em solid var(--accent-color);
 }
 
@@ -152,9 +153,24 @@ button:active {
     cursor: pointer;
 }
 
-.todo__delete-all:hover {
+.todo__delete-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--text-color);
     background: var(--accent-color);
+    box-shadow: 0.1em 0.1em 0.5em 0.1em var(--accent-color);
+}
+
+.todo__delete-all-btn:hover {
+    cursor: pointer;
+    color: var(--accent-color);
+    background: var(--text-color);
+    transform: scale(1.1);
+}
+
+.todo__delete-all-btn:active {
+    transform: scale(0.8);
 }
 
 [contenteditable="true"] {

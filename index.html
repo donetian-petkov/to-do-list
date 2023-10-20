@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>To-Do List</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
 <div class="todo">
-  <h1 class="todo__title">My Tasks</h1>
-  <form class="todo__input" name="input" id="input">
-    <input class="todo__input-field" id="input-field" name="input-field" type="text" placeholder="Enter your task">
-    <button class="todo__input-button" id="add-button"><i class="fa-solid fa-plus fa-xl"></i></button>
-  </form>
-  <button class="todo__delete-all" id="delete-all"><i class="fa-solid fa-trash fa-2xl"></i></button>
-  <table class="todo__list">
-    <thead class="todo__list-header">
-    <tr class="todo__list-header-items">
-      <th class="todo__list-header-item todo__list-id">No</th>
-      <th class="todo__list-header-item todo__list-text">Item</th>
-      <th class="todo__list-header-item todo__list-status">Status</th>
-      <th class="todo__list-header-item todo__list-actions">Actions</th>
-    </tr>
-    </thead>
-    <tbody class="todo__list-body" id="task-list">
+    <h1 class="todo__title">My Tasks</h1>
+    <form class="todo__input" name="input" id="input">
+        <input class="todo__input-field" id="input-field" name="input-field" type="text" placeholder="Enter your task">
+        <button class="todo__input-button" id="add-button"><i class="fa-solid fa-plus fa-xl"></i></button>
+    </form>
+    <section id="delete-all" class="todo__delete-all">
+        <label for="delete-all-btn">Delete All Tasks</label>
+        <button class="todo__delete-all-btn" id="delete-all-btn"><i class="fa-solid fa-trash fa-2xl"></i></button>
+    </section>
+    <table class="todo__list">
+        <thead class="todo__list-header">
+        <tr class="todo__list-header-items">
+            <th class="todo__list-header-item todo__list-id">No</th>
+            <th class="todo__list-header-item todo__list-text">Item</th>
+            <th class="todo__list-header-item todo__list-status">Status</th>
+            <th class="todo__list-header-item todo__list-actions">Actions</th>
+        </tr>
+        </thead>
+        <tbody class="todo__list-body" id="task-list">
 
-    </tbody>
-  </table>
+        </tbody>
+    </table>
 </div>
 <script src="script.js" type="module"></script>
 </body>
